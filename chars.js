@@ -48,8 +48,9 @@ function drawChartPoblacion(fecha,numGrafico,TituloGrafica) {
     data.addColumn('string', 'TIPO');
     data.addColumn('number', 'CANTIDAD');
 
+    // Recorriendo datos para recoger los diferentes registros para cada char
     for (let year of datos) {
-
+        // La columna RP_EJERCICIO debe ser el mismo que la fecha para poder crear con éxito el char
         if (year['RP_EJERCICIO'] == fecha) {
             let poblacionHombres = parseInt(year['RP_HOMBREs']);
             let poblacionMujeres = parseInt(year['RP_MUJERES']);
@@ -67,6 +68,7 @@ function drawChartPoblacion(fecha,numGrafico,TituloGrafica) {
         }
     }
 
+    // Definiendo las opciones del char
     var options = {
         title: TituloGrafica,
         is3D: true,

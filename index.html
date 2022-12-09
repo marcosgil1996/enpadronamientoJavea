@@ -24,13 +24,18 @@
             <h1 style="text-align: center;"><b>POBLACIÓN EN JÁVEA</b></h1>
             <div class="row" id="fechas" style="text-align: center;"">
                 <script text="javascript">
-                  let cont = 0;
-                  const item = document.querySelector('#fechas');
+                  let cont = 0; // Contador para definir cada char
+                  const item = document.querySelector('#fechas'); // Seleccionando el Selector
+                  /**
+                    Iterar desde el número 2021 al 2005 
+                    que son los gráficos a mostrar
+                  **/
                   for(let i = 2021;i>=2005;i--){
                     cont ++;
-                    let fechaActual = i;
-                    let tipoChar = "p"+cont+"Chart";
-                    console.log(tipoChar);
+                    let fechaActual = i; // Guardando i en fechaActual
+                    let tipoChar = "p"+cont+"Chart"; // Defiendo el nombre de char a seguir
+                    console.log(tipoChar); // Imprimimos por consola para verificar...
+                    // Insertamos en el item el código HTML para cada uno de los items
                     item.innerHTML += `
                       <div class="col s12 m12 l6">
                         <div class="card">
@@ -42,7 +47,6 @@
                       </div>
                     `;
                   }
-                  
                 </script>
             </div>
         </div>
