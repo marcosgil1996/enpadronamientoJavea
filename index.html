@@ -17,7 +17,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </head>
     <body>
-
         <!-- EJECUCIÓN DE LOS CHARS -->
         <script type="text/javascript" src="chars.js">
         </script>
@@ -34,17 +33,18 @@
                     console.log(tipoChar);
                     item.innerHTML += `
                       <div class="col s12 m12 l6">
-                        <h2>AÑO `+fechaActual+`</h2>
-                        <div id="`+tipoChar+`" class="col s12"
+                        <div class="card">
+                          <h2>AÑO `+fechaActual+`</h2>
+                          <div class="card-body">
+                            <div id="`+tipoChar+`"></div>
+                          </div>
+                        </div>
                       </div>
                     `;
                   }
                   
                 </script>
             </div>
-
-            
-
         </div>
     </body>
 </html></body></html>l</body></html>

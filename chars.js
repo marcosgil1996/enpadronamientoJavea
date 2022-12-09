@@ -70,7 +70,7 @@ function drawChartPoblacion(fecha,numGrafico,TituloGrafica) {
     var options = {
         title: TituloGrafica,
         is3D: true,
-        width: 750,
+        width: 550,
         height: 630,
         colors: ['#1e88e5', '#005cb2']
 
