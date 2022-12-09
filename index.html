@@ -11,42 +11,68 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
         <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link
+        rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <!-- Hoja de estilos CSS -->
+        <style type="text/css">
+            @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Titan+One&display=swap');
+            body {
+                background-image: radial-gradient(circle 321px at 8.3% 75.7%, rgba(209,247,241,1) 0%, rgba(249,213,213,1) 81%);
+            }
+            .estilo-bordes {
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+                border-width: 5px;
+                border-color: black;
+                border-style: solid;
+                font-family: 'Titan One', cursive;
+            }
+        </style>
     </head>
     <body>
         <!-- EJECUCIÓN DE LOS CHARS -->
-        <script type="text/javascript" src="chars.js">
-        </script>
-        <div class="container">
-            <h1 style="text-align: center;"><b>POBLACIÓN EN JÁVEA</b></h1>
-            <div class="row" id="fechas" style="text-align: center;"">
+        <script type="text/javascript" src="chars.js"></script>
+        <div class="container fondo-pagina">
+            <h1 style="text-align: center; font-family: 'Caveat', cursive;">
+                <b>POBLACIÓN EN JÁVEA</b>
+            </h1>
+            <div class="row" style="text-align: center;">
+              <div class="col s12"><span class="flow-text">
+                Gráficas de tipo circular, donde se especifica la gente que se ha ido empadronado en Jávea entre los años 2005 y 2021
+              </span></div>
+            </div>
+            <div class="row" id="fechas" style="text-align: center;" ">
                 <script text="javascript">
-                  let cont = 0; // Contador para definir cada char
-                  const item = document.querySelector('#fechas'); // Seleccionando el Selector
-                  /**
+                    let cont = 0; // Contador para definir cada char
+                    const item = document.querySelector('#fechas');
+                    // Seleccionando el Selector
+                    /**
                     Iterar desde el número 2021 al 2005 
                     que son los gráficos a mostrar
                   **/
-                  for(let i = 2021;i>=2005;i--){
-                    cont ++;
-                    let fechaActual = i; // Guardando i en fechaActual
-                    let tipoChar = "p"+cont+"Chart"; // Defiendo el nombre de char a seguir
-                    console.log(tipoChar); // Imprimimos por consola para verificar...
-                    // Insertamos en el item el código HTML para cada uno de los items
-                    item.innerHTML += `
-                      <div class="col s12 m12 l6">
-                        <div class="card">
-                          <h2>AÑO `+fechaActual+`</h2>
-                          <div class="card-body">
-                            <div id="`+tipoChar+`"></div>
+                    for (let i = 2021; i >= 2005; i--) {
+                      cont++;
+                      let fechaActual = i; // Guardando i en fechaActual
+                      let tipoChar = "p" + cont + "Chart"; // Defiendo el nombre de char a seguir
+                      console.log(tipoChar);
+                      // Imprimimos por consola para verificar...
+                      // Insertamos en el item el código HTML para cada uno de los items
+                      item.innerHTML += `
+                        <div class="col s12 m12 l6">
+                          <div class="card z-depth-4 estilo-bordes">
+                            <h2 style="padding-top:25px;">AÑO ` + fechaActual + `</h2>
+                            <div class="card-body">
+                              <div id="` + tipoChar + `"></div>
+                            </div>
                           </div>
                         </div>
-                      </div>
                     `;
-                  }
+                    }
                 </script>
             </div>
         </div>
