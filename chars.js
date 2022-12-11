@@ -19,8 +19,20 @@ xhttp.onreadystatechange = function () {
     }
 }
 
+// Obtener una referencia al elemento canvas del DOM
+const $grafica = document.querySelector("#grafica");
+// Las etiquetas son las que van en el eje X.
+const allYears = new Array();
+const totalPoblacion = new Array();
 
 function drawCharts() {
+    let cont = 0;
+    for(let i=2005; i<=2021; i++){
+        cont ++;
+        let tipoChar = "p" + cont + "Chart"; // Defiendo el nombre de char a seguir
+        drawChartPoblacion(i,tipoChar,"POBLACIÓN EN JÁVEA");
+    }
+    /*
     drawChartPoblacion("2021","p1Chart","POBLACIÓN JÁVEA 2021");
     drawChartPoblacion("2020","p2Chart","POBLACIÓN JÁVEA 2020");
     drawChartPoblacion("2019","p3Chart","POBLACIÓN JÁVEA 2019");
@@ -37,7 +49,7 @@ function drawCharts() {
     drawChartPoblacion("2008","p14Chart","POBLACIÓN JÁVEA 2008");
     drawChartPoblacion("2007","p15Chart","POBLACIÓN JÁVEA 2007");
     drawChartPoblacion("2006","p16Chart","POBLACIÓN JÁVEA 2006");
-    drawChartPoblacion("2005","p17Chart","POBLACIÓN JÁVEA 2005");
+    drawChartPoblacion("2005","p17Chart","POBLACIÓN JÁVEA 2005");*/
 }
 
 // Función para la creación de la gráfica
@@ -52,8 +64,13 @@ function drawChartPoblacion(fecha,numGrafico,TituloGrafica) {
     for (let year of datos) {
         // La columna RP_EJERCICIO debe ser el mismo que la fecha para poder crear con éxito el char
         if (year['RP_EJERCICIO'] == fecha) {
+            allYears.push(year['RP_EJERCICIO']);
             let poblacionHombres = parseInt(year['RP_HOMBREs']);
             let poblacionMujeres = parseInt(year['RP_MUJERES']);
+
+            let sumaTotal = poblacionHombres + poblacionMujeres;
+            totalPoblacion.push(sumaTotal);
+
             console.log(poblacionHombres);
             console.log(poblacionMujeres);
             data.addRows([
@@ -83,4 +100,36 @@ function drawChartPoblacion(fecha,numGrafico,TituloGrafica) {
 
     
 }
+
+
+
+// Podemos tener varios conjuntos de datos. Comencemos con uno
+const datosVentas2020 = {
+    label: "EMPADRONAMIENTO TOTAL",
+    data: totalPoblacion, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
+    borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
+    borderWidth: 1,// Ancho del borde
+};
+new Chart($grafica, {
+    type: 'line',// Tipo de gráfica
+    data: {
+        labels: allYears,
+        datasets: [
+            datosVentas2020,
+            // Aquí más datos...
+            
+        ]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }],
+        },
+    }
+});
+
 

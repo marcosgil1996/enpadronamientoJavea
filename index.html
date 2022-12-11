@@ -7,6 +7,9 @@
 
         <title>DATOS POBLACIÓN JÁVEA</title>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <!-- Carga la librería google charts de google para poder realizar el gráfico circular-->
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -35,6 +38,10 @@
         </style>
     </head>
     <body>
+
+        <!-- CHAR QUE CONTIENE TODOS LOS DATOS -->
+        <canvas id="grafica" style="width: 70%; height: 350px;"></canvas>
+
         <!-- EJECUCIÓN DE LOS CHARS -->
         <script type="text/javascript" src="chars.js"></script>
         <div class="container fondo-pagina">
@@ -55,7 +62,7 @@
                     Iterar desde el número 2021 al 2005 
                     que son los gráficos a mostrar
                   **/
-                    for (let i = 2021; i >= 2005; i--) {
+                    for (let i = 2005; i <= 2021; i++) {
                       cont++;
                       let fechaActual = i; // Guardando i en fechaActual
                       let tipoChar = "p" + cont + "Chart"; // Defiendo el nombre de char a seguir
