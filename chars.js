@@ -89,15 +89,15 @@ function drawChartPoblacion(fecha,numGrafico,TituloGrafica) {
 // Podemos tener varios conjuntos de datos. Comencemos con uno
 const datosPoblacion = {
     label: "EMPADRONAMIENTO TOTAL",
-    data: totalPoblacion, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
-    borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
+    data: totalPoblacion, // EJE Y TOTAL DE POBLACIÓN POR AÑO 
+    backgroundColor: 'rgba(78, 100, 169, 0.6)', // Color fondo de leyenda
+    borderColor: 'rgba(255, 99, 71, 1)', // Color de la linea
     borderWidth: 1,// Ancho del borde
 };
-new Chart($grafica, {
+graphicTotal = new Chart($grafica, {
     type: 'line',// Tipo de gráfica
     data: {
-        labels: allYears,
+        labels: allYears, // EJE X TODOS LOS AÑOS
         datasets: [
             datosPoblacion,            
         ]
@@ -112,5 +112,3 @@ new Chart($grafica, {
         },
     }
 });
-
-
